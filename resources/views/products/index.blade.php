@@ -26,14 +26,14 @@
                     <td>{{ $item->qty }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
-                        <a href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
+                        <a href="{{route('products.edit' , ['products' => $item])}}">Configure Here!</a>
                     </td>
 
                     <td>
                         <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
                             @csrf
                             @method ('delete')    
-                            <input type="submit" value="Delete" />
+                            <input type="submit" value="-- Delete Product Inventory! --" />
                         </form>
                     </td>
                 </tr>

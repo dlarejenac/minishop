@@ -15,7 +15,7 @@
         <input type="text" name="description" placeholder="-- Product Description --" />
         <input type="text" name="qty" placeholder="-- Product Quantity --" />
         <input type="text" name="price" placeholder="-- Product Price --" />
-        <input type="submit" value="-- Add Product Here --" />
+        <input type="submit" value="-- Click to Add Product --" />
     </form>
 </body>
 </html>
