@@ -28,6 +28,14 @@
                     <td>
                         <a href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
                     </td>
+
+                    <td>
+                        <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
+                            @csrf
+                            @method ('delete')    
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
                 </tr>
             @endforeach       
     </table>
