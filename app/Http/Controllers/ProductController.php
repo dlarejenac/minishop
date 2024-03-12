@@ -33,9 +33,9 @@ class ProductController extends Controller
        return view('products.edit' , ['products' => $products]);
     }
 
-    public function  update(ProductModel $products, Request $request){
+    public function update(ProductModel $products, Request $request){
         $data = $request->validate([
-            'name' => 'required|unique:products,name',
+            'name' => 'required|unique:products,name,' . $products->id,
             'description' => 'required',
             'qty' => 'required|numeric',
             'price' => 'required|numeric|decimal:0,2'
@@ -43,6 +43,6 @@ class ProductController extends Controller
 
         $products->update($data);
 
-        return redirect(route('products.index'))->with('success', 'Product Updated Succesfully!');
+        return redirect(route('products.index'));
     }
 }
