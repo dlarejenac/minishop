@@ -11,7 +11,7 @@
 
         <form action="{{ route('search') }}" method="GET">
             @csrf
-            <input type="text" name="query" placeholder="Search products...">
+            <input type="text" name="query" placeholder="Search...">
             <button type="submit">Search</button>
         </form>
 
@@ -37,14 +37,14 @@
                     <td>{{ $item->qty }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
-                        <a href="{{route('products.edit' , ['products' => $item])}}">Configure Here!</a>
+                        <a href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
                     </td>
 
                     <td>
                         <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
                             @csrf
                             @method ('delete')    
-                            <input type="submit" value="-- Delete Product Inventory! --" />
+                            <input type="submit" value="Delete" />
                         </form>
                     </td>
                 </tr>
