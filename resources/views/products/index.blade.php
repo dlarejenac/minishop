@@ -88,9 +88,11 @@
                 <div class="col-6 d-flex justify-content-end align-items-center">
                     <nav>
                         <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <a href="#" class="text-white mx-2 mt-2">HOME</a>
-                            <a href="#" class="text-white mx-2 mt-2">ABOUT</a>
+                            <div class="input-group">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn bg-dark text-white" type="button">Search</button>
+                            </div>
+
                         </form>
                     </nav>
                 </div>
@@ -103,81 +105,10 @@
         <div class="container mb-4">
             <div class="row">
                 <!-- Sidebar -->
-                <div class="col-lg-3">
-                    <button class="btn btn-outline-secondary mb-3 w-100 d-lg-none" type="button"
-                        data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span>Show filter</span>
-                    </button>
-
-                    <div class="collapse card d-lg-block mb-5 shadow-none" id="navbarSupportedContent">
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button text-dark bg-light" type="button"
-                                        data-mdb-toggle="collapse" data-mdb-target="#panelsStayOpen-collapseOne"
-                                        aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        PRODUCTS
-                                    </button>
-                                </h2>
-                                <div class="accordion-body">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#" class="text-dark">ALL PRODUCTS </a></li><br>
-                                        <li><h6 href="#" class="text-dark">MEN`S APPAREL </h6></li>
-                                        <li><h6 href="#" class="text-dark">WOMEN`S APPAREL </h6></li>
-                                        <li><h6 href="#" class="text-dark">MOBILES AND GADJETS</h6></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="my-4">
-
-                    <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                              <button
-                                      class="accordion-button text-dark bg-light"
-                                      type="button"
-                                      data-mdb-toggle="collapse"
-                                      data-mdb-target="#panelsStayOpen-collapseOne"
-                                      aria-expanded="true"
-                                      aria-controls="panelsStayOpen-collapseOne"
-                                      >
-                              PRODUCT TYPE
-                              </button>
-                            </h2>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
-                          <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                              <button
-                                      class="accordion-button text-dark bg-light"
-                                      type="button"
-                                      data-mdb-toggle="collapse"
-                                      data-mdb-target="#panelsStayOpen-collapseOne"
-                                      aria-expanded="true"
-                                      aria-controls="panelsStayOpen-collapseOne"
-                                      >
-                             SORT BY
-                              </button>
-                            </h2>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group mb-4">
-                        <button class="btn w-100" type="button" style="background-color: black; color: white;">SEARCH PRODUCT</button>
-                    </div>
+                <div class="col-lg-2">
                 </div>
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
-                    <h6>PRODUCTS > ALL PRODUCTS</h6>
                     <div class="row">
                         <!-- Card 1 -->
                         <div class="col-md-4 mb-4">
