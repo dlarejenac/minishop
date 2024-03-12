@@ -8,5 +8,23 @@
 <body>
     <h1>Products</h1>
     <a href="/products/create">Add Product</a>
+    @if ($products->count() > 0)
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Qty</th>
+            <th>Price</th>
+        </tr>
+            @foreach ($products as $item) 
+                <tr>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->description }}</td>
+                    <td>{{ $item->qty }}</td>
+                    <td>{{ $item->price }}</td>
+                </tr>
+            @endforeach       
+    </table>
+    @endif
 </body>
 </html>
