@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
  
@@ -29,3 +30,4 @@ Route::delete('products/{products}/destroy', [ProductController::class, 'destroy
 //Route::get('/search' , 'ProductController@search');
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
