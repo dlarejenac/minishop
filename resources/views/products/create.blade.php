@@ -7,5 +7,6 @@
 </head>
 <body>
     <h1>Create</h1>
+    <a href="/products">View Products</a>
 </body>
 </html>
