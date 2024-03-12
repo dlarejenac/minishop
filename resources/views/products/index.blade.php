@@ -87,12 +87,12 @@
                 </div>
                 <div class="col-6 d-flex justify-content-end align-items-center">
                     <nav>
-                        <form class="d-flex">
+                        <form class="d-flex" action="{{ route('search') }}" method="GET">
+                            @csrf
                             <div class="input-group">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn bg-dark text-white" type="button">Search</button>
-                            </div>
-
+                                <input class="form-control me-2" type="text" name="query" placeholder="Search...">
+                                <button class="btn bg-dark text-white" type="submit">Search</button>
+                            </div>                      
                         </form>
                     </nav>
                 </div>
@@ -103,97 +103,34 @@
     <!-- End Header -->
     <section class="pt-5">
         <div class="container mb-4">
-            <div class="row">
+            <div class="row">                
                 <!-- Sidebar -->
                 <div class="col-lg-2">
+                    <a class="btn btn-success mb-4" href="/products/create">+ Add Product</a>
                 </div>
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
                     <div class="row">
                         <!-- Card 1 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                        @if ($products->count() > 0)
+                            @foreach($products as $item)
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">{{ $item->name }}</h5>
+                                        <p class="card-text">Price: P{{ $item->price }}</p>
+                                        <a class="btn btn-primary" href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
+                                        <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
+                                            @csrf
+                                            @method ('delete')
+                                            <input class="btn btn-danger" type="submit" value="Delete" />
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Card 3 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                         <!-- Card 4 -->
-                         <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                         <!-- Card 5 -->
-                         <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                         <!-- Card 6 -->
-                         <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                    <a href="#" class="btn btn-dark">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
