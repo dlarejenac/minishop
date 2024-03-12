@@ -11,17 +11,23 @@
     @if ($products->count() > 0)
     <table>
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Description</th>
             <th>Qty</th>
             <th>Price</th>
+            <th>Edit</th>
         </tr>
             @foreach ($products as $item) 
                 <tr>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->qty }}</td>
                     <td>{{ $item->price }}</td>
+                    <td>
+                        <a href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
+                    </td>
                 </tr>
             @endforeach       
     </table>
