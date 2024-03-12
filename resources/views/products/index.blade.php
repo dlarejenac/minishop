@@ -6,6 +6,17 @@
     <title>MiniShop</title>
 </head>
 <body>
+    
+        <h1>Product Search</h1>
+
+        <form action="{{ route('search') }}" method="GET">
+            @csrf
+            <input type="text" name="query" placeholder="Search products...">
+            <button type="submit">Search</button>
+        </form>
+
+    <br>
+
     <h1>Products</h1>
     <a href="/products/create">Add Product</a>
     @if ($products->count() > 0)
