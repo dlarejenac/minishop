@@ -23,7 +23,7 @@ class ProductController extends Controller
             'price' => 'required|decimal:2'
         ]);
 
-        $addProduct = ProductModel::create($data);
+        $addProducts = ProductModel::create($data);
 
         return redirect(route('products.index'));
     }
