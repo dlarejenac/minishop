@@ -8,13 +8,14 @@
 <body>
     <h1>Create</h1>
     <a href="/products">View Products</a>
-    <form action="/products" method="POST">
+    <form method="post" action="{{ route('products.store') }}">
         @csrf
-        <input type="text" name="name" placeholder="name">
-        <input type="text" name="description" placeholder="description">
-        <input type="text" name="quantity" placeholder="quantity">
-        <input type="text" name="price" placeholder="price">
-        <button type="submit">Add</button>
+        @method('post')
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="description" placeholder="Description" />
+        <input type="text" name="qty" placeholder="Quantity" />
+        <input type="text" name="price" placeholder="Price" />
+        <input type="submit" value="Add Product" />
     </form>
 </body>
 </html>
