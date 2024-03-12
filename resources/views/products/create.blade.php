@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiniShop</title>
 </head>
-<body>
+<!--<body>
     <h1>Create</h1>
     <a href="/products">View Products</a>
     <form method="post" action="{{ route('products.store') }}">
@@ -18,4 +18,6 @@
         <input type="submit" value="Add" />
     </form>
 </body>
+-->
+
 </html>
