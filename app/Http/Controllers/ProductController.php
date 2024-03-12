@@ -8,23 +8,24 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        return view('products.index');
+        $data = ProductModel::all();
+        return view('products.index', ['products' => $data]);
     }
 
     public function create() {
         return view('products.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request) {       
         $data = $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:products,name',
             'description' => 'required',
             'qty' => 'required|numeric',
-            'price' => 'required|decimal:2'
+            'price' => 'required|numeric|decimal:0,2'
         ]);
-
-        $addProducts = ProductModel::create($data);
-
+    
+        ProductModel::create($data);
+    
         return redirect(route('products.index'));
     }
 }
