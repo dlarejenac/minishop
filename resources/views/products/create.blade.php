@@ -57,6 +57,11 @@
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
                     <div class="row">
+                    @if ($errors->any())
+                        @foreach($errors->all() as $item)
+                            <div class="alert alert-danger">{{ $item }}</div>
+                        @endforeach
+                    @endif
                         <form method="post" action="{{ route('products.store') }}">
                             @csrf
                             @method('post')
