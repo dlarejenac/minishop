@@ -34,7 +34,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <h3 class="mb-0">MINISHOP</h3>
+                    <a href="/products" class="mb-0 h3 text-decoration-none">MINISHOP</a>
                 </div>
                 <div class="col-6 d-flex justify-content-end align-items-center">
                     <nav>
@@ -62,51 +62,51 @@
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
                     <div class="row">
-                        @if (session('success-create'))
-                            <div class="alert alert-success">{{ session('success-create') }}</div>
+                        @if (session('success-green'))
+                            <div class="alert alert-success">{{ session('success-green') }}</div>
                             @php
-                                session()->forget('success-create');
+                                session()->forget('success-green');
                             @endphp
                         @endif
 
-                        @if (session('success-destroy'))
-                            <div class="alert alert-danger">{{ session('success-destroy') }}</div>
+                        @if (session('success-red'))
+                            <div class="alert alert-danger">{{ session('success-red') }}</div>
                             @php
-                                session()->forget('success-destroy');
+                                session()->forget('success-red');
                             @endphp
                         @endif
                         <!-- Card 1 -->
                         @if ($products->count() > 0)
                             @foreach($products as $item)
-                            <div class="col-md-4 mb-4">
-                                <div class="card">
-                                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">{{ $item->name }}</h5>
-                                        <p class="card-text">Price: P{{ $item->price }}</p>
-                                        <a class="btn btn-primary" href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
-                                        <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
-                                            @csrf
-                                            @method ('delete')
-                                            <input class="btn btn-danger" type="submit" value="Delete" />
-                                        </form>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card">
+                                        <img src="https://trilogymerchph.com/cdn/shop/products/Nike-Legacy-91-Dri-Fit-Cap-Black-White-CW6327-010-1_300x300.jpg?v=1630409974" class="card-img-top"  alt="Product Image">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">{{ $item->name }}</h5>
+                                            <p class="card-text">Price: P{{ $item->price }}</p>
+                                            <a class="btn btn-primary" href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
+                                            <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
+                                                @csrf
+                                                @method ('delete')
+                                                <input class="btn btn-danger" type="submit" value="Delete" />
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
-                        @endif
+                        @else
+                            <img src="https://www.skholla.in//images/no-product.png" />
+                        @endif                      
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Footer -->
-<footer class="bg-brown text-white py-3">
+<footer class="bg-brown text-white py-5">
     <div class="container text-center">
         <p>Footer</p>
     </div>
 </footer>
 </body>
 </html>
-
-
