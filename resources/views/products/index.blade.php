@@ -42,8 +42,15 @@
                             @csrf
                             <div class="input-group">
                                 <input class="form-control me-2" type="text" name="query" placeholder="Search...">
-                                <button class="btn bg-dark text-white" type="submit">Search</button>
-                            </div>                      
+                                <button class="btn bg-dark text-white" type="submit">Search</button>  
+                                <a href="/cart" class="btn btn-warning position-relative">
+                                <i class="bi bi-cart"></i>  My Cart
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    99+
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                                </a>                            
+                            </div>                     
                         </form>
                     </nav>
                 </div>
