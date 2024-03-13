@@ -8,55 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>MiniShop</title>
 </head>
-<!--
-<body>
-    
-        <h1>Product Search</h1>
-
-        <form action="{{ route('search') }}" method="GET">
-            @csrf
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
-        </form>
-
-    <br>
-
-    <h1>Products</h1>
-    <a href="/products/create">Add Product</a>
-    @if ($products->count() > 0)
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Edit</th>
-        </tr>
-            @foreach ($products as $item)
-                <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->description }}</td>
-                    <td>{{ $item->qty }}</td>
-                    <td>{{ $item->price }}</td>
-                    <td>
-                        <a href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
-                    </td>
-
-                    <td>
-                        <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
-                            @csrf
-                            @method ('delete')
-                            <input type="submit" value="Delete" />
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-    </table>
-    @endif
-</body>
--->
 <style>
     .bg-black {
         background: url('https://media.discordapp.net/attachments/955303580817035304/1217034065585242152/headers.png?ex=66028e4c&is=65f0194c&hm=edc681f3cb3ba8fd8b9af0fbfcbf499d1893358cfd79ff061baa9775785416b6&=&format=webp&quality=lossless') no-repeat center center fixed;
@@ -136,17 +87,12 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <!-- Footer -->
 <footer class="bg-brown text-white py-3">
     <div class="container text-center">
         <p>Footer</p>
     </div>
 </footer>
-
-    <!-- Add your JavaScript links or scripts here -->
-
 </body>
 </html>
 
