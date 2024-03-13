@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <title>MiniShop</title>
 </head>
 <!--
@@ -23,25 +25,25 @@
             <th>Edit</th>
         </tr>
             @foreach ($products as $item)
-                <tr>
+<tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->qty }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
-                        <a href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
+                        <a href="{{ route('products.edit', ['products' => $item]) }}">Edit</a>
                     </td>
 
                     <td>
-                        <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
+                        <form method="post" action="{{ route('products.destroy', ['products' => $item]) }}">
                             @csrf
                             @method ('delete')
                             <input type="submit" value="Delete" />
                         </form>
                     </td>
                 </tr>
-            @endforeach
+@endforeach
     </table>
     @endif
 </body>
@@ -60,6 +62,7 @@
         padding-top: 3rem;
         padding-bottom: 3rem;
     }
+
     .bg-brown {
         background-color: #52382A;
     }
@@ -68,7 +71,7 @@
 <body>
 
     <!-- Header -->
-    <header class="bg-black text-white py-3" >
+        <header class="bg-black text-white py-3">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -78,7 +81,8 @@
                     <nav>
                         <form class="d-flex">
                             <div class="input-group">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control me-2" type="search" placeholder="Search"
+                                    aria-label="Search">
                                 <button class="btn bg-dark text-white" type="button">Search</button>
                             </div>
 
@@ -88,6 +92,7 @@
             </div>
         </div>
     </header>
+
 
     <!-- End Header -->
     <section class="pt-5">
@@ -140,8 +145,8 @@
                         </div>
 
 
-                         <!-- Card 4 -->
-                         <div class="col-md-4 mb-4">
+                        <!-- Card 4 -->
+                        <div class="col-md-4 mb-4">
                             <div class="card">
                                 <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
                                 <div class="card-body text-center">
@@ -154,8 +159,8 @@
                         </div>
 
 
-                         <!-- Card 5 -->
-                         <div class="col-md-4 mb-4">
+                        <!-- Card 5 -->
+                        <div class="col-md-4 mb-4">
                             <div class="card">
                                 <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
                                 <div class="card-body text-center">
@@ -168,8 +173,8 @@
                         </div>
 
 
-                         <!-- Card 6 -->
-                         <div class="col-md-4 mb-4">
+                        <!-- Card 6 -->
+                        <div class="col-md-4 mb-4">
                             <div class="card">
                                 <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
                                 <div class="card-body text-center">
@@ -180,8 +185,6 @@
                                 </div>
                             </div>
                         </div>
-
-
 
                     </div>
                 </div>
@@ -191,15 +194,13 @@
 
     <!-- Footer -->
     <!-- Footer -->
-<footer class="bg-brown text-white py-3">
-    <div class="container text-center">
-        <p>Footer</p>
-    </div>
-</footer>
-
+    <footer class="bg-brown text-white py-3">
+        <div class="container text-center">
+            <p>Footer</p>
+        </div>
+    </footer>
     <!-- Add your JavaScript links or scripts here -->
 
 </body>
+
 </html>
-
-

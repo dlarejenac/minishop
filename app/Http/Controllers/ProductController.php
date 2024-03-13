@@ -16,16 +16,16 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(Request $request) {       
+    public function store(Request $request) {
         $data = $request->validate([
             'name' => 'required|unique:products,name',
             'description' => 'required',
             'qty' => 'required|numeric',
             'price' => 'required|numeric|decimal:0,2'
         ]);
-    
+
         ProductModel::create($data);
-    
+
         return redirect(route('products.index'));
     }
 
@@ -50,5 +50,9 @@ class ProductController extends Controller
         $products->delete();
 
         return redirect(route('products.index'))->with('success', 'Product Deleted Succesfully!');
+    }
+
+    public function Checkout() {
+        return view('products.checkout');
     }
 }
