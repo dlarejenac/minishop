@@ -84,12 +84,16 @@
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ $item->name }}</h5>
                                             <p class="card-text">Price: P{{ $item->price }}</p>
-                                            <a class="btn btn-primary" href="{{route('products.edit' , ['products' => $item])}}">Edit</a>
-                                            <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
-                                                @csrf
-                                                @method ('delete')
-                                                <input class="btn btn-danger" type="submit" value="Delete" />
-                                            </form>
+                                            <hr />
+                                            <div class="d-flex justify-content-center">
+                                                <a class="btn btn-primary" href="{{route('products.edit' , ['products' => $item])}}" style="width: 100px;">Edit</a>
+                                                <div class="mx-1"></div>
+                                                <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
+                                                    @csrf
+                                                    @method ('delete')
+                                                    <input class="btn btn-danger" style="width: 100px;" type="submit" value="Delete" />
+                                                </form>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>
