@@ -25,8 +25,8 @@ class ProductController extends Controller
         ]);
     
         ProductModel::create($data);
-    
-        return redirect(route('products.index'));
+
+        return redirect(route('products.index'))->with('success-create', $data['name'] . ' has been added');
     }
 
     public function edit(ProductModel $products){
@@ -49,7 +49,7 @@ class ProductController extends Controller
     public function destroy(ProductModel $products){
         $products->delete();
 
-        return redirect(route('products.index'))->with('success', 'Product Deleted Succesfully!');
+        return redirect(route('products.index'))->with('success-destroy', $products['name']. ' has been removed');
     }
 
     public function search(Request $request)
