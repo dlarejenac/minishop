@@ -67,7 +67,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Group Members
 
-Diaz, Rex Vincent Allen A.
-Cane, Jerald David
-Balane, Jeffrey
+Diaz, Rex Vincent Allen A. |
+Cane, Jerald David |
+Balane, Jeffrey |
 Gurra, Mark Daniel
