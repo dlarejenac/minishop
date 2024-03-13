@@ -6,6 +6,6 @@
     <title>MiniShop</title>
 </head>
 <body>
-    <h1>My Cart</h1>
+    <h1>Confident ka ba?</h1>
 </body>
 </html>
