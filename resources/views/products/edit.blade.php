@@ -124,6 +124,10 @@
     .bg-brown {
         background-color: #52382A;
     }
+
+    .bg-buy {
+        background-color: #52382A;
+    }
 </style>
 
 
@@ -143,25 +147,30 @@
                             @csrf
                             <div class="input-group">
                                 <input class="form-control me-2" type="text" name="query" placeholder="Search...">
-                                <button class="btn bg-dark text-white" type="submit">Search</button>  
-                                <a href="/cart" class="btn btn-warning position-relative">
-                                <i class="bi bi-cart"></i>  My Cart
+                                <button class="btn bg-dark text-white" type="submit" style="height:80%"><i class="bi bi-search"></i> Search</button>
+                                <a href="/cart" class="btn btn-warning position-relative" style="height:77%">
+                                <i class="bi bi-cart" ></i>  My Cart
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     99+
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
-                                </a>                            
-                            </div>                     
+                                </a>
+                            </div>
                         </form>
                     </nav>
                 </div>
             </div>
         </div>
-    </header>
-
+    </header>   
     <div class="carou container mt-5"> <!-- Added mx-auto for centering -->
         <div class="row">
             <div class="col-lg-8 mx-auto"> <!-- Adjust the column width as needed -->
+            @if (session('success-green'))
+                <div class="alert alert-success">{{ session('success-green') }}</div>
+                @php
+                    session()->forget('success-green');
+                @endphp
+            @endif
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <!-- Carousel items here -->
@@ -289,28 +298,32 @@
                 </div>
             </div>
             <div class="form col-lg-4">
-                <a href="">
-                    <h4>EDIT</h4>
-                </a><br>
                 <div class="border rounded p-4" style="background-color: #ccc;">
-                    <form>
+                @if ($errors->any())
+                    @foreach($errors->all() as $item)
+                        <div class="alert alert-danger">{{ $item }}</div>
+                    @endforeach
+                @endif
+                    <form method="post" action="{{ route('products.update', ['products' => $products]) }}">
+                        @csrf
+                        @method('put')
                         <div class="mb-3">
                             <label for="exampleInputName" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;">
+                            <input type="text" name="name" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;" value="{{$products->name}}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail" class="form-label">Description</label>
-                            <input type="text" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;">
+                            <input type="text" name="description" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;" value="{{$products->description}}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputMessage" class="form-label">Quantity</label>
-                            <input type="text" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;">
+                            <input type="text" name="qty" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;" value="{{$products->qty}}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputMessage" class="form-label">Price</label>
-                            <input type="text" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;">
+                            <input type="text" name="price" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;" value="{{$products->price}}">
                         </div>
-                        <button type="submit" class="btn btn-primary d-block mx-auto" style="background-color: black; width: 200px;">UPDATE</button>
+                        <button type="submit" class="btn btn-primary d-block mx-auto" style="background-color: black; width: 200px;">Update</button>
                     </form>
                 </div>
             </div>
@@ -319,27 +332,29 @@
     </div>
 
     <div class="descriptions">
-        <h3>Beautiful Places</h3>
-        <h4>P60.00</h4>
-        <h7>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br> Lorem Ipsum has been the industry's
-            standard dummy text ever since the 1500s, <br>when an unknown printer took a galley of type and scrambled it to make a
-        </h7><br><br>
+        <h3>{{ $products->name }}</h3>
+        <h4>P{{ $products->price }}</h4>
+        <h7>{{ $products->description }}</h7><br><br>
         <div>
             <h7>Quantity</h7>
-            <button onclick="decrementQuantity()">-</button>
-            <input type="text" id="quantityInput" value="1" style="width: 50px; text-align: center;">
-            <button onclick="incrementQuantity()">+</button>
+            <input type="text" id="quantityInput" value="{{ $products->qty }}" style="width: 50px; text-align: center;" disabled>
         </div><br>
         <div>
-            <button onclick="decrementQuantity()" style="padding: 8px 16px; margin-right: 10px;">ADD PRODUCT</button>
-            <button onclick="incrementQuantity()" style="padding: 8px 16px; background-color: black; color: white;">BUY NOW</button>
+            <div class="d-flex">
+                <form>
+                    <a href="/cart" class="text-decoration-none btn btn-warning"><i class="bi bi-cart-plus"></i> Add To Cart</a>
+                </form>
+                    <div class="mx-2"></div>
+                <form>
+                    <a href="/cart" class="text-decoration-none btn text-light" style="background: #52382A;">Buy Now</a>
+                </form>
+            </div>
         </div><br>
         <h4>Related Products</h4>
     </div>
 
 
     <!-- Carousel Navigation -->
-
 
     <section class="pt-5">
         <div class="container">
@@ -351,93 +366,30 @@
                 <div class="col-md-9">
                     <div class="row">
                         <!-- Card 1 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">VIEW</a>
+                        @foreach($relatedProducts as $item)
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="https://crvftco.com/cdn/shop/files/classic-dad-hat-white-right-side-64c71ca8bd0d5_300x.jpg?v=1691452595" class="card-img-top" alt="Product Image">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">{{ $item->name }}</h5>
+                                        <p class="card-text">Price: P{{ $item->price }}</p>
+                                        <hr />
+                                        <a href="{{route('products.edit' , ['products' => $item])}}" class="btn btn-dark w-25">View</a>                                    
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">VIEW</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Card 3 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">VIEW</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Card 4 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">VIEW</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Card 5 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">VIEW</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Card 6 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product Image">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">PROCUDT NAME</h5>
-                                    <p class="card-text">Price: P0.00</p>
-                                    <a href="#" class="btn btn-dark">VIEW</a>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer class="bg-black text-white py-3">
-        <div class="container text-center">
-            <p>Footer</p>
-        </div>
-    </footer>
-
+<!-- Footer -->
+<footer class="bg-brown text-white py-5">
+    <div class="container text-center">
+        <p>Footer</p>
+    </div>
+</footer>
     <script>
         $('#myCarousel').carousel({
             interval: false

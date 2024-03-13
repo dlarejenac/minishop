@@ -42,7 +42,7 @@
                             @csrf
                             <div class="input-group">
                                 <input class="form-control me-2" type="text" name="query" placeholder="Search...">
-                                <button class="btn bg-dark text-white" type="submit">Search</button>  
+                                <button class="btn bg-dark text-white" type="submit"><i class="bi bi-search"></i> Search</button>  
                                 <a href="/cart" class="btn btn-warning position-relative">
                                 <i class="bi bi-cart"></i>  My Cart
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -87,18 +87,18 @@
                             @foreach($products as $item)
                                 <div class="col-md-4 mb-4">
                                     <div class="card">
-                                        <img src="https://trilogymerchph.com/cdn/shop/products/Nike-Legacy-91-Dri-Fit-Cap-Black-White-CW6327-010-1_300x300.jpg?v=1630409974" class="card-img-top"  alt="Product Image">
+                                        <img src="https://crvftco.com/cdn/shop/files/classic-dad-hat-black-right-side-64c71c72bd181_300x.jpg?v=1691452573" class="card-img-top"  alt="Product Image">
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ $item->name }}</h5>
                                             <p class="card-text">Price: P{{ $item->price }}</p>
                                             <hr />
                                             <div class="d-flex justify-content-center">
-                                                <a class="btn btn-primary" href="{{route('products.edit' , ['products' => $item])}}" style="width: 100px;">Edit</a>
+                                                <a class="btn btn-warning" href="{{route('products.edit' , ['products' => $item])}}" style="width: 100px;"><i class="bi bi-eye"></i> View</a>
                                                 <div class="mx-1"></div>
                                                 <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
                                                     @csrf
                                                     @method ('delete')
-                                                    <input class="btn btn-danger" style="width: 100px;" type="submit" value="Delete" />
+                                                    <button class="btn btn-danger" style="width: 100px;" type="submit"><i class="bi bi-trash-fill"></i> Delete</button>
                                                 </form>
                                             </div>                                            
                                         </div>

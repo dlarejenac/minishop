@@ -41,7 +41,7 @@
                             <div class="input-group">
                                 <input class="form-control me-2" type="search" placeholder="Search"
                                     aria-label="Search">
-                                <button class="btn bg-dark text-white" type="button">Search</button>
+                                <button class="btn bg-dark text-white" type="button"><i class="bi bi-search"></i> Search</button>
                             </div>
                         </form>
                     </nav>
@@ -184,7 +184,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -192,7 +191,8 @@
         </div>
     </section>
 </body>
-<footer class="bg-black text-white py-3">
+<!-- Footer -->
+<footer class="bg-brown text-white py-5">
     <div class="container text-center">
         <p>Footer</p>
     </div>

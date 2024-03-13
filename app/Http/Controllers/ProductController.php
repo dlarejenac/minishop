@@ -30,7 +30,8 @@ class ProductController extends Controller
     }
 
     public function edit(ProductModel $products){
-       return view('products.edit' , ['products' => $products]);
+       $relatedProducts = ProductModel::all();
+       return view('products.edit' , ['products' => $products, 'relatedProducts' => $relatedProducts]);
     }
 
     public function update(ProductModel $products, Request $request){
@@ -43,7 +44,7 @@ class ProductController extends Controller
 
         $products->update($data);
 
-        return redirect(route('products.index'))->with('success-green', $products['name'] . ' has been updated');
+        return redirect(route('products.edit', $products->id))->with('success-green', $products['name'] . ' has been updated');
     }
 
     public function destroy(ProductModel $products){
