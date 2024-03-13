@@ -62,6 +62,19 @@
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
                     <div class="row">
+                        @if (session('success-create'))
+                            <div class="alert alert-success">{{ session('success-create') }}</div>
+                            @php
+                                session()->forget('success-create');
+                            @endphp
+                        @endif
+
+                        @if (session('success-destroy'))
+                            <div class="alert alert-danger">{{ session('success-destroy') }}</div>
+                            @php
+                                session()->forget('success-destroy');
+                            @endphp
+                        @endif
                         <!-- Card 1 -->
                         @if ($products->count() > 0)
                             @foreach($products as $item)
