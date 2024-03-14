@@ -341,8 +341,12 @@
         </div><br>
         <div>
             <div class="d-flex">
-                <form>
-                    <a href="/cart" class="text-decoration-none btn btn-warning"><i class="bi bi-cart-plus"></i> Add To Cart</a>
+                <form method="post" action="{{ route('cart.store') }}">
+                    @csrf
+                    @method('post')
+                    <input type="hidden" name="name" value="{{ $products->name }}" />
+                    <input type="hidden" name="product_id" value="{{ $products->id }}" />
+                    <button class="text-decoration-none btn btn-warning"><i class="bi bi-cart-plus"></i> Add To Cart</button>
                 </form>
                     <div class="mx-2"></div>
                 <form>
