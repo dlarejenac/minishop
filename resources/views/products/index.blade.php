@@ -105,15 +105,11 @@
                                         <input name="price" type="text" class="form-control" id="productprice"
                                             aria-describedby="">
                                     </div>
-                                    <div class="d-flex justify-content-center">
-                                        <button type="reset" class="btn btn-secondary me-2">Reset</button>
-                                        <input type="submit" class="btn btn-dark" value="Add Item"/>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="reset" class="btn btn-dark me-2">Clear</button>
+                                        <input type="submit" class="btn btn-success" value="Add Item"/>
                                     </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <!-- Additional buttons or actions can be added here -->
                             </div>
                         </div>
                     </div>
