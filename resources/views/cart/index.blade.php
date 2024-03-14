@@ -82,11 +82,11 @@
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                        <div class="col-md-3 col-lg-2 col-xl-2">
                                             <h5 class="mb-0">Price: P{{ $item->product->price }}</h5>
                                         </div>
                                         
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                        <div class="col-md-1 col-lg-1 col-xl-1">
                                             <form method="post" action="{{ route('cart.destroy', ['item' => $item]) }}">
                                                 @csrf
                                                 @method ('delete')
