@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap Icons CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>MiniShop</title>
@@ -64,8 +65,60 @@
             <div class="row">                
                 <!-- Sidebar -->
                 <div class="col-lg-2">
-                    <a class="btn btn-success mb-4" href="/products/create">+ Add Product</a>
+                    <button class="btn btn-success mb-4" id="openModalBtn">+ Add Product</button>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Your modal content here -->
+                                @if ($errors->any())
+                                    @foreach($errors->all() as $item)
+                                        <div class="alert alert-danger">{{ $item }}</div>
+                                    @endforeach
+                                @endif
+                                <form method="post" action="{{ route('products.store') }}">
+                                @csrf
+                                @method('post')
+                                    <div class="mb-3">
+                                        <label for="Product" class="form-label">Product Name</label>
+                                        <input name="name" type="text" class="form-control" id="product" aria-describedby="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Description" class="form-label">Description</label>
+                                        <textarea name="description" class="form-control" id="description" rows="5"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Quantity" class="form-label">Quantity</label>
+                                        <input name="qty" type="text" class="form-control" id="quantity" aria-describedby="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Product-Price" class="form-label">Product Price</label>
+                                        <input name="price" type="text" class="form-control" id="productprice"
+                                            aria-describedby="">
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="reset" class="btn btn-secondary me-2">Reset</button>
+                                        <input type="submit" class="btn btn-dark" value="Add Item"/>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- Additional buttons or actions can be added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
                     <div class="row">
@@ -120,4 +173,12 @@
     </div>
 </footer>
 </body>
+
+<script>
+    document.getElementById('openModalBtn').addEventListener('click', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+        myModal.show();
+    });
+</script>
+
 </html>

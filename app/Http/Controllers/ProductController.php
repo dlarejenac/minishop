@@ -12,10 +12,6 @@ class ProductController extends Controller
         return view('products.index', ['products' => $data]);
     }
 
-    public function create() {
-        return view('products.create');
-    }
-
     public function store(Request $request) {       
         $data = $request->validate([
             'name' => 'required|unique:products,name',
