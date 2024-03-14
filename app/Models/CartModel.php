@@ -18,4 +18,6 @@ class CartModel extends Model
     public function product() {
         return $this->belongsTo(ProductModel::class, 'product_id');
     }
+
+    
 }
