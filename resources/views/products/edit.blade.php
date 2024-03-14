@@ -121,9 +121,7 @@
         padding-bottom: 3rem;
     }
 
-    .bg-brown {
-        background-color: #52382A;
-    }
+
 </style>
 
 
@@ -143,15 +141,15 @@
                             @csrf
                             <div class="input-group">
                                 <input class="form-control me-2" type="text" name="query" placeholder="Search...">
-                                <button class="btn bg-dark text-white" type="submit">Search</button>  
-                                <a href="/cart" class="btn btn-warning position-relative">
-                                <i class="bi bi-cart"></i>  My Cart
+                                <button class="btn bg-dark text-white" type="submit" style="height:80%">Search</button>
+                                <a href="/cart" class="btn btn-warning position-relative" style="height:77%">
+                                <i class="bi bi-cart" ></i>  My Cart
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     99+
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
-                                </a>                            
-                            </div>                     
+                                </a>
+                            </div>
                         </form>
                     </nav>
                 </div>

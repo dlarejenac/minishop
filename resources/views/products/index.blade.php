@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@
         padding-top: 3rem;
         padding-bottom: 3rem;
     }
+
     .bg-brown {
         background-color: #52382A;
     }
@@ -30,7 +32,7 @@
 <body>
 
     <!-- Header -->
-    <header class="bg-black text-white py-3" >
+    <header class="bg-black text-white py-3">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -42,15 +44,16 @@
                             @csrf
                             <div class="input-group">
                                 <input class="form-control me-2" type="text" name="query" placeholder="Search...">
-                                <button class="btn bg-dark text-white" type="submit">Search</button>  
+                                <button class="btn bg-dark text-white" type="submit">Search</button>
                                 <a href="/cart" class="btn btn-warning position-relative">
-                                <i class="bi bi-cart"></i>  My Cart
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    99+
-                                    <span class="visually-hidden">unread messages</span>
-                                </span>
-                                </a>                            
-                            </div>                     
+                                    <i class="bi bi-cart"></i> My Cart
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        99+
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                </a>
+                            </div>
                         </form>
                     </nav>
                 </div>
@@ -61,10 +64,54 @@
     <!-- End Header -->
     <section class="pt-5">
         <div class="container mb-4">
-            <div class="row">                
-                <!-- Sidebar -->
+            <div class="row">
+                <!-- Add Product Button -->
                 <div class="col-lg-2">
-                    <a class="btn btn-success mb-4" href="/products/create">+ Add Product</a>
+                    <button type="button" class="btn btn-success mb-4" id="openModalBtn">+ Add Product</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Your modal content here -->
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="Product" class="form-label">Product Name</label>
+                                        <input type="text" class="form-control" id="product" aria-describedby="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Description" class="form-label">Description</label>
+                                        <textarea class="form-control" id="description" rows="5"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Quantity" class="form-label">Quantity</label>
+                                        <input type="text" class="form-control" id="quantity" aria-describedby="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Product-Price" class="form-label">Product Price</label>
+                                        <input type="text" class="form-control" id="productprice"
+                                            aria-describedby="">
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="reset" class="btn btn-secondary me-2">Reset</button>
+                                        <button type="add-item" class="btn btn-dark">Add Item</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- Additional buttons or actions can be added here -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
@@ -84,40 +131,54 @@
                         @endif
                         <!-- Card 1 -->
                         @if ($products->count() > 0)
-                            @foreach($products as $item)
+                            @foreach ($products as $item)
                                 <div class="col-md-4 mb-4">
                                     <div class="card">
-                                        <img src="https://trilogymerchph.com/cdn/shop/products/Nike-Legacy-91-Dri-Fit-Cap-Black-White-CW6327-010-1_300x300.jpg?v=1630409974" class="card-img-top"  alt="Product Image">
+                                        <img src="https://trilogymerchph.com/cdn/shop/products/Nike-Legacy-91-Dri-Fit-Cap-Black-White-CW6327-010-1_300x300.jpg?v=1630409974"
+                                            class="card-img-top" alt="Product Image">
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ $item->name }}</h5>
                                             <p class="card-text">Price: P{{ $item->price }}</p>
                                             <hr />
                                             <div class="d-flex justify-content-center">
-                                                <a class="btn btn-primary" href="{{route('products.edit' , ['products' => $item])}}" style="width: 100px;">Edit</a>
+                                                <a class="btn btn-primary"
+                                                    href="{{ route('products.edit', ['products' => $item]) }}"
+                                                    style="width: 100px;">Edit</a>
                                                 <div class="mx-1"></div>
-                                                <form method="post" action="{{route('products.destroy', ['products' => $item])}}">
+                                                <form method="post"
+                                                    action="{{ route('products.destroy', ['products' => $item]) }}">
                                                     @csrf
                                                     @method ('delete')
-                                                    <input class="btn btn-danger" style="width: 100px;" type="submit" value="Delete" />
+                                                    <input class="btn btn-danger" style="width: 100px;"
+                                                        type="submit" value="Delete" />
                                                 </form>
-                                            </div>                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
                             <img src="https://www.skholla.in//images/no-product.png" />
-                        @endif                      
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Footer -->
-<footer class="bg-brown text-white py-5">
-    <div class="container text-center">
-        <p>Footer</p>
-    </div>
-</footer>
+    <footer class="bg-brown text-white py-5">
+        <div class="container text-center">
+            <p>Footer</p>
+        </div>
+    </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById('openModalBtn').addEventListener('click', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+        myModal.show();
+    });
+</script>
+
 </html>

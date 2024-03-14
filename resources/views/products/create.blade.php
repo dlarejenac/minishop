@@ -42,7 +42,7 @@
                             <div class="input-group">
                                 <input class="form-control me-2" type="text" name="query" placeholder="Search...">
                                 <button class="btn bg-dark text-white" type="submit">Search</button>
-                            </div>                      
+                            </div>
                         </form>
                     </nav>
                 </div>
@@ -53,7 +53,7 @@
     <!-- End Header -->
     <section class="pt-5">
         <div class="container mb-4">
-            <div class="row">                
+            <div class="row">
                 <!-- MINISHOP CARDS -->
                 <div class="col-md-9">
                     <div class="row">
@@ -71,7 +71,7 @@
                             <input type="text" name="price" placeholder="Product Price" />
                             <input type="submit" value="Add" />
                         </form>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
