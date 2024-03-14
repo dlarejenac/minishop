@@ -26,4 +26,15 @@ class CartController extends Controller
 
         return redirect(route('products.edit', $request->product_id))->with('success-green', $productName . ' has been added to cart');
     }
+
+    // public function destroy(ProductModel $products){
+    //     $products->delete();
+
+    //     return redirect(route('products.index'))->with('success-red', $products['name']. ' has been removed');
+    // }
+
+    public function destroy(CartModel $item){
+        $item->delete();
+        return redirect(route('cart.index'))->with('success', $item['name']. 'Item has been removed');
+    }
 }

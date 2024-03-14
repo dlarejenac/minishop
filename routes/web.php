@@ -30,3 +30,5 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+
+Route::delete('/cart/{item}/destroy', [CartController::class, 'destroy'])->name('cart.destroy');

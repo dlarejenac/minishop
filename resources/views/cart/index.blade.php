@@ -85,11 +85,15 @@
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                             <h5 class="mb-0">Price: P{{ $item->product->price }}</h5>
                                         </div>
+                                        
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <a href="#!" class="text-danger">
-                                                <h5>Delete</h5>
-                                            </a>
+                                            <form method="post" action="{{ route('cart.destroy', ['item' => $item]) }}">
+                                                @csrf
+                                                @method ('delete')
+                                                <button class="btn btn-danger" style="width: 100px;" type="submit"><i class="bi bi-trash-fill"></i> Delete</button>
+                                            </form>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
