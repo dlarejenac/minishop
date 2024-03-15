@@ -53,10 +53,10 @@
         <div class="container h-100 py-5">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-10">
+                    @if ($cartItems->count() > 0)
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="bold mb-0 text-black">My Cart</h3>
-                    </div>
-                    @if ($cartItems->count() > 0)
+                    </div>                  
                         @foreach ($cartItems as $item)
                             <div class="card rounded-3 mb-4">
                                 <div class="card-body p-4">
@@ -97,8 +97,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    @endif                  
+                        @endforeach                                     
                     <div class="card">
                         <div class="card-body">
                             <div class="container">
@@ -107,14 +106,20 @@
                                         <div class="d-flex flex-row mb-3">
                                             <h6 class="mb-3 flex-grow-1">Total Item:</h6>
                                             <h6 class="mb-3 flex-fill">{{ $cartItems->count() }}</h6>
-                                            <h6 class="mb-3 flex-fill">P{{ $cartTotalPrice }}</h6>                                         
-                                            <button type="button" class="btn btn-warning btn-block btn-lg">Check Out</button>
+                                            <h6 class="mb-3 flex-fill">P{{ $cartTotalPrice }}</h6>
+                                            <form method="post" action="{{ route('cart.checkout') }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning btn-block btn-lg">Check Out</button>
+                                            </form>                                                                             
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @else
+                            <img src="https://www.buy.airoxi.com/img/empty-cart-1.png"/>
+                    @endif
                 </div>
             </div>
         </div>

@@ -150,8 +150,10 @@
                                 <button class="btn bg-dark text-white" type="submit" style="height:80%"><i class="bi bi-search"></i> Search</button>
                                 <a href="/cart" class="btn btn-warning position-relative" style="height:77%">
                                 <i class="bi bi-cart" ></i>  My Cart
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    99+
+                                @if ($cartItems->count() > 0)
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ $cartItems->count() }}
+                                @endif
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
                                 </a>

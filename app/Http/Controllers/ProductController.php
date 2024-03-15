@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CartModel;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class ProductController extends Controller
 {
     public function index() {
         $data = ProductModel::all();
-        return view('products.index', ['products' => $data]);
+        $cartItems = CartModel::with('product')->get();
+        return view('products.index', ['products' => $data, 'cartItems' => $cartItems]);
     }
 
     public function store(Request $request) {       
@@ -27,7 +29,8 @@ class ProductController extends Controller
 
     public function edit(ProductModel $products){
        $relatedProducts = ProductModel::all();
-       return view('products.edit' , ['products' => $products, 'relatedProducts' => $relatedProducts]);
+       $cartItems = CartModel::with('product')->get();
+       return view('products.edit' , ['products' => $products, 'relatedProducts' => $relatedProducts, 'cartItems' => $cartItems]);
     }
 
     public function update(ProductModel $products, Request $request){
