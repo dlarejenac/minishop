@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CartModel;
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -29,6 +30,18 @@ class CartController extends Controller
 
     public function destroy(CartModel $item){
         $item->delete();
-        return redirect(route('cart.index'))->with('success', $item['name']. 'Item has been removed');
+        return redirect(route('cart.index'))->with('success-green', $item['name']. 'Item has been removed');
+    }
+
+    public function checkout() {
+        $cartItems = CartModel::all();
+
+        foreach ($cartItems as $item) {
+            ProductModel::where('id', $item->product_id)->delete();
+        }
+
+        CartModel::truncate();
+
+        return redirect(route('products.index'))->with('success-green', 'Purchase success. Thank you for buying!');
     }
 }
