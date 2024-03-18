@@ -12,6 +12,7 @@ class ProductModel extends Model
     public $table = 'products';
 
     protected $fillable = [
+        'image',
         'name',
         'description',
         'qty',

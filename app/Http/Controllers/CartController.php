@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CartModel;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CartController extends Controller
 {
@@ -37,7 +38,19 @@ class CartController extends Controller
         $cartItems = CartModel::all();
 
         foreach ($cartItems as $item) {
+            $image = ProductModel::where('id', $item->product_id)->get('image');
+           
             ProductModel::where('id', $item->product_id)->delete();
+
+            $images = json_decode($image, true);
+
+            $imagePaths = [];
+
+            foreach ($images as $item) {
+                $imagePaths = $item['image'];
+
+                unlink(public_path($imagePaths));
+            }      
         }
 
         CartModel::truncate();
