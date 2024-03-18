@@ -87,9 +87,13 @@
                                         <div class="alert alert-danger">{{ $item }}</div>
                                     @endforeach
                                 @endif
-                                <form method="post" action="{{ route('products.store') }}">
+                                <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
+                                    <div class="mb-3">
+                                        <label for="Product" class="form-label">Image</label>
+                                        <input name="image" type="file" class="form-control" id="image" aria-describedby="">
+                                    </div>
                                     <div class="mb-3">
                                         <label for="Product" class="form-label">Product Name</label>
                                         <input name="name" type="text" class="form-control" id="product" aria-describedby="">
@@ -138,7 +142,7 @@
                             @foreach($products as $item)
                                 <div class="col-md-4 mb-4">
                                     <div class="card">
-                                        <img src="https://crvftco.com/cdn/shop/files/classic-dad-hat-black-right-side-64c71c72bd181_300x.jpg?v=1691452573" class="card-img-top"  alt="Product Image">
+                                        <img src="{{ $item->image }}">
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ $item->name }}</h5>
                                             <p class="card-text">Price: P{{ $item->price }}</p>

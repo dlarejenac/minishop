@@ -62,7 +62,7 @@
                                 <div class="card-body p-4">
                                     <div class="row d-flex justify-content-between align-items-center">
                                         <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                                            <img src="{{ $item->product->image }}"
                                                 class="img-fluid rounded-3" alt="Cotton T-shirt">
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3">
@@ -86,8 +86,8 @@
                                             <h5 class="mb-0">Price: P{{ $item->product->price }}</h5>
                                         </div>
                                         
-                                        <div class="col-md-1 col-lg-1 col-xl-1">
-                                            <form method="post" action="{{ route('cart.destroy', ['item' => $item]) }}">
+                                        <div class="col-md-1 col-lg-1 col-xl-1 d-flex justify-content-center">
+                                            <form method="post" action="{{ route('cart.destroy', ['item' => $item]) }}">                                             
                                                 @csrf
                                                 @method ('delete')
                                                 <button class="btn btn-danger" style="width: 100px;" type="submit"><i class="bi bi-trash-fill"></i> Delete</button>

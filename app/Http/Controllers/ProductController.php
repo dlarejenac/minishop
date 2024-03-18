@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CartModel;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -15,16 +16,27 @@ class ProductController extends Controller
     }
 
     public function store(Request $request) {       
-        $data = $request->validate([
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|unique:products,name',
             'description' => 'required',
             'qty' => 'required|numeric',
             'price' => 'required|numeric|decimal:0,2'
         ]);
     
-        ProductModel::create($data);
+        $imageName = time().'.'.$request->image->extension();
+        
+        $request->image->storeAs('public/images',$imageName);
 
-        return redirect(route('products.index'))->with('success-green', $data['name'] . ' has been added');
+        ProductModel::create([
+            'image' => 'storage/images/'.$imageName,
+            'name' => $request->name,
+            'description' => $request->description,
+            'qty' => $request->qty,
+            'price' => $request->price
+        ]);
+
+        return redirect(route('products.index'))->with('success-green', $request->name . ' has been added');
     }
 
     public function edit(ProductModel $products){
@@ -34,19 +46,38 @@ class ProductController extends Controller
     }
 
     public function update(ProductModel $products, Request $request){
-        $data = $request->validate([
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|unique:products,name,' . $products->id,
             'description' => 'required',
             'qty' => 'required|numeric',
             'price' => 'required|numeric|decimal:0,2'
         ]);
 
-        $products->update($data);
+        if ($request->hasFile('image')) {
+            File::delete(public_path($products->image));
+
+            $imageName = time().'.'.$request->image->extension();
+        
+            $request->image->storeAs('public/images/',$imageName);
+
+            $products->update([
+                'image' => 'storage/images/'.$imageName
+            ]);
+        }
+
+        $products->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'qty' => $request->qty,
+            'price' => $request->price
+        ]);
 
         return redirect(route('products.edit', $products->id))->with('success-green', $products['name'] . ' has been updated');
     }
 
     public function destroy(ProductModel $products){
+        File::delete(public_path($products->image));
         $products->delete();
 
         return redirect(route('products.index'))->with('success-red', $products['name']. ' has been removed');

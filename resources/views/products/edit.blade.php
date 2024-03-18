@@ -179,123 +179,12 @@
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active" data-slide-number="0">
-                                    <img src="https://source.unsplash.com/Pn6iimgM-wo/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/Pn6iimgM-wo/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="1">
-                                    <img src="https://source.unsplash.com/tXqVe7oO-go/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/tXqVe7oO-go/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="2">
-                                    <img src="https://source.unsplash.com/qlYQb7B9vog/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/qlYQb7B9vog/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="3">
-                                    <img src="https://source.unsplash.com/QfEfkWk1Uhk/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/QfEfkWk1Uhk/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="4">
-                                    <img src="https://source.unsplash.com/CSIcgaLiFO0/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/CSIcgaLiFO0/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="5">
-                                    <img src="https://source.unsplash.com/a_xa7RUKzdc/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/a_xa7RUKzdc/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="6">
-                                    <img src="https://source.unsplash.com/uanoYn1AmPs/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/uanoYn1AmPs/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="7">
-                                    <img src="https://source.unsplash.com/_snqARKTgoc/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/_snqARKTgoc/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="8">
-                                    <img src="https://source.unsplash.com/M9F8VR0jEPM/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/M9F8VR0jEPM/"
-                                        data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-                                </div>
-                                <div class="carousel-item" data-slide-number="9">
-                                    <img src="https://source.unsplash.com/Q1p7bh3SHj8/1600x900/" class="d-block w-100"
-                                        alt="..." data-remote="https://source.unsplash.com/Q1p7bh3SHj8/"
+                                    <img src="/{{ $products->image }}" class="d-block w-100"
+                                        alt="{{ $products->image }}" data-remote="https://source.unsplash.com/Pn6iimgM-wo/"
                                         data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Carousel Navigation -->
-                        <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row mx-0">
-                                        <div id="carousel-selector-0" class="thumb col-4 col-sm-2 px-1 py-2 selected"
-                                            data-target="#myCarousel" data-slide-to="0">
-                                            <img src="https://source.unsplash.com/Pn6iimgM-wo/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-1" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="1">
-                                            <img src="https://source.unsplash.com/tXqVe7oO-go/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-2" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="2">
-                                            <img src="https://source.unsplash.com/qlYQb7B9vog/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-3" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="3">
-                                            <img src="https://source.unsplash.com/QfEfkWk1Uhk/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-4" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="4">
-                                            <img src="https://source.unsplash.com/CSIcgaLiFO0/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-5" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="5">
-                                            <img src="https://source.unsplash.com/a_xa7RUKzdc/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row mx-0">
-                                        <div id="carousel-selector-6" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="6">
-                                            <img src="https://source.unsplash.com/uanoYn1AmPs/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-7" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="7">
-                                            <img src="https://source.unsplash.com/_snqARKTgoc/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-8" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="8">
-                                            <img src="https://source.unsplash.com/M9F8VR0jEPM/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div id="carousel-selector-9" class="thumb col-4 col-sm-2 px-1 py-2"
-                                            data-target="#myCarousel" data-slide-to="9">
-                                            <img src="https://source.unsplash.com/Q1p7bh3SHj8/600x400/"
-                                                class="img-fluid" alt="...">
-                                        </div>
-                                        <div class="col-2 px-1 py-2"></div>
-                                        <div class="col-2 px-1 py-2"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div>                   
                     </div>
                 </div>
             </div>
@@ -306,9 +195,13 @@
                         <div class="alert alert-danger">{{ $item }}</div>
                     @endforeach
                 @endif
-                    <form method="post" action="{{ route('products.update', ['products' => $products]) }}">
+                    <form method="post" action="{{ route('products.update', ['products' => $products]) }}" enctype="multipart/form-data">
                         @csrf
                         @method('put')
+                        <div class="mb-3">
+                            <label for="exampleInputName" class="form-label">Image</label>
+                            <input type="file" name="image" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;" value="{{$products->image}}">
+                        </div>
                         <div class="mb-3">
                             <label for="exampleInputName" class="form-label">Product Name</label>
                             <input type="text" name="name" class="form-control" id="exampleInputName" placeholder="" style="width: 100%; height: 30px;" value="{{$products->name}}">
@@ -375,7 +268,7 @@
                         @foreach($relatedProducts as $item)
                             <div class="col-md-4 mb-4">
                                 <div class="card">
-                                    <img src="https://crvftco.com/cdn/shop/files/classic-dad-hat-white-right-side-64c71ca8bd0d5_300x.jpg?v=1691452595" class="card-img-top" alt="Product Image">
+                                    <img src="/{{ $item->image }}" alt="{{ $item->image }}">
                                     <div class="card-body text-center">
                                         <h5 class="card-title">{{ $item->name }}</h5>
                                         <p class="card-text">Price: P{{ $item->price }}</p>
